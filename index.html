@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>株式会社ユニークトラッシュ | オリジナル業務用ウェブアプリ制作</title>
+<meta name="description" content="現場のクセをアプリに。オリジナルの業務用Webアプリ制作・HP制作、そしてレガシーシステムを現代に引っ越しさせる『システムリフォーム』。株式会社ユニークトラッシュ。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  :root{
+    --bg:#f6f2e9;
+    --ink:#141414;
+    --ink-soft:#2a2a2a;
+    --pink:#ff5c8a;
+    --yellow:#ffd23f;
+    --blue:#4a6cf7;
+    --mint:#a3e4c4;
+    --lavender:#c9b8ff;
+    --coral:#ff8a5b;
+    --paper:#fff8ea;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  html{scroll-behavior:smooth}
+
+  /* Shared grid paper bg */
+  .paper-grid{
+    background-image:
+      linear-gradient(rgba(20,20,20,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,20,.05) 1px, transparent 1px);
+    background-size:32px 32px;
+  }
+
+  /* Button primitives */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:12px;
+    font-weight:700;font-size:14px;border:2px solid var(--ink);cursor:pointer;
+    transition:transform .2s, box-shadow .2s;
+    font-family:inherit;
+  }
+  .btn-primary{background:var(--ink);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .btn-outline{background:transparent;color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .btn-outline:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);background:var(--yellow)}
+
+  /* Container widths */
+  .wrap{max-width:1320px;margin:0 auto;padding:0 clamp(20px, 4vw, 56px)}
+
+  /* Neo-brutalist card base */
+  .nb-card{border:2px solid var(--ink);border-radius:20px;box-shadow:6px 6px 0 var(--ink);
+    transition:transform .25s cubic-bezier(.2,.9,.3,1.2), box-shadow .25s;
+  }
+  .nb-card:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0 var(--ink)}
+
+  /* Section label */
+  .sec-label{display:inline-flex;align-items:center;gap:10px;
+    font-family:"Space Mono", monospace;font-size:11px;letter-spacing:0.16em;
+  }
+  .sec-label .dot{width:8px;height:8px;border-radius:2px}
+
+  /* Marquee */
+  .marquee{display:flex;overflow:hidden;gap:40px;white-space:nowrap}
+  .marquee-track{display:flex;gap:40px;animation:mv 30s linear infinite;flex-shrink:0}
+  @keyframes mv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* Sticky cursor sticker */
+  .cursor-sticker{position:fixed;pointer-events:none;z-index:999;
+    padding:6px 10px;background:var(--ink);color:#fff;
+    font-family:"Space Mono", monospace;font-size:11px;letter-spacing:0.06em;
+    border-radius:8px;transform:translate(-50%,-160%) rotate(-4deg);
+    opacity:0;transition:opacity .2s;
+  }
+  .cursor-sticker.on{opacity:1}
+
+  /* Utility hover pop */
+  .pop-hover{transition:transform .3s cubic-bezier(.2,.9,.3,1.2)}
+  .pop-hover:hover{transform:translateY(-6px) rotate(-2deg)}
+
+  /* h1 responsive */
+  h1.mega{margin:0;font-weight:900;line-height:0.92;letter-spacing:-0.03em;
+    font-size:clamp(44px, 9vw, 120px);font-family:"Zen Kaku Gothic New", sans-serif;
+  }
+  h2.section{margin:0;font-weight:900;line-height:0.95;letter-spacing:-0.03em;
+    font-size:clamp(34px, 6vw, 72px);font-family:"Zen Kaku Gothic New", sans-serif;
+  }
+
+  /* Nav open (mobile) */
+  .nav-drawer{position:fixed;inset:0;background:var(--ink);color:var(--yellow);
+    z-index:200;display:flex;flex-direction:column;padding:24px;
+    transform:translateY(-100%);transition:transform .35s cubic-bezier(.2,.9,.3,1);
+  }
+  .nav-drawer.open{transform:translateY(0)}
+
+  /* Tile rotate-on-hover */
+  .tile{transition:transform .3s cubic-bezier(.2,.9,.3,1.2), box-shadow .3s;cursor:pointer;
+    border:2px solid var(--ink);border-radius:18px;
+    box-shadow:4px 4px 0 var(--ink);overflow:hidden;position:relative;
+  }
+  .tile:hover{transform:translateY(-10px) scale(1.03);box-shadow:8px 12px 0 var(--ink)}
+  .tile .glyph{transition:transform .4s cubic-bezier(.2,.9,.3,1.2)}
+  .tile:hover .glyph{transform:rotate(20deg) scale(1.2)}
+
+  /* Works image placeholder */
+  .work-img{aspect-ratio:4/3;border:2px solid var(--ink);border-radius:14px;
+    overflow:hidden;position:relative;background:#fff;
+    transition:transform .4s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .work-img::after{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(-30deg, transparent 0 10px, rgba(20,20,20,.04) 10px 20px);
+  }
+  .work-card:hover .work-img{transform:rotate(-2deg) scale(1.02)}
+
+  /* Reform blueprint bg */
+  .blueprint{
+    background:#0a1a33;color:#cfe1ff;border-radius:24px;position:relative;overflow:hidden;
+    border:2px solid var(--ink);
+  }
+  .blueprint::before{content:"";position:absolute;inset:0;opacity:.4;
+    background-image:
+      linear-gradient(rgba(200,225,255,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,225,255,.08) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+
+  /* accordion */
+  .acc details{border-bottom:1.5px solid var(--ink);padding:20px 4px}
+  .acc summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    font-weight:700;font-size:clamp(16px, 2vw, 20px);
+  }
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary .ico{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);
+    display:grid;place-items:center;flex-shrink:0;background:var(--yellow);
+    transition:transform .25s;font-weight:800
+  }
+  .acc details[open] summary .ico{transform:rotate(45deg);background:var(--pink);color:#fff}
+  .acc .answer{margin-top:14px;line-height:1.85;color:#333;font-size:14.5px}
+
+  /* Floating shapes */
+  .blob{position:absolute;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+
+  /* form */
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+  .field label{font-size:12px;font-weight:700;letter-spacing:.04em;
+    font-family:"Space Mono",monospace}
+  .field input,.field textarea,.field select{
+    font-family:inherit;font-size:15px;padding:14px 16px;border:2px solid var(--ink);
+    border-radius:10px;background:#fff;outline:none;transition:box-shadow .15s, transform .15s;
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{
+    box-shadow:4px 4px 0 var(--pink);transform:translate(-2px,-2px);
+  }
+  .field textarea{min-height:140px;resize:vertical}
+
+  /* chip */
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;
+    border:2px solid var(--ink);background:#fff;font-size:12px;font-weight:700;cursor:pointer;
+    transition:background .15s, transform .15s}
+  .chip:hover{background:var(--yellow)}
+  .chip.on{background:var(--ink);color:var(--yellow)}
+
+  /* responsive nav */
+  @media (max-width: 900px){
+    .nav-inline{display:none !important}
+    .nav-toggle{display:inline-flex !important}
+  }
+  @media (min-width: 901px){
+    .nav-toggle{display:none !important}
+  }
+
+  /* fade-in on scroll */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s, transform .6s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div id="cursor-sticker" class="cursor-sticker">VIEW →</div>
+
+<script type="text/babel" src="site/Nav.jsx"></script>
+<script type="text/babel" src="site/Hero.jsx"></script>
+<script type="text/babel" src="site/Services.jsx"></script>
+<script type="text/babel" src="site/Reform.jsx"></script>
+<script type="text/babel" src="site/Flow.jsx"></script>
+<script type="text/babel" src="site/Voice.jsx"></script>
+<script type="text/babel" src="site/Company.jsx"></script>
+<script type="text/babel" src="site/Contact.jsx"></script>
+<script type="text/babel" src="site/Footer.jsx"></script>
+
+<script type="text/babel">
+function useReveal(){
+  React.useEffect(()=>{
+    const io = new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    return ()=> io.disconnect();
+  },[]);
+}
+
+function App(){
+  useReveal();
+  return (
+    <>
+      <Nav/>
+      <Hero/>
+      <Marquee/>
+      <Services/>
+      <Reform/>
+      <Flow/>
+      <Voice/>
+      <Company/>
+      <Contact/>
+      <Footer/>
+    </>
+  );
+}
+
+function Marquee(){
+  const items = ['ORIGINAL BUSINESS WEB APPS','◆','業務の クセ を アプリ に','✺','SYSTEM REFORM','●','HP 制作','▲','SINCE 2018','◼','TOKYO / JAPAN'];
+  const line = (
+    <div className="marquee-track">
+      {items.concat(items).map((t,i)=>(
+        <span key={i} style={{display:'inline-flex',alignItems:'center',gap:16,
+          fontFamily:'"Archivo Black",sans-serif',fontSize:'clamp(28px,5vw,56px)',
+          letterSpacing:'-0.01em'}}>
+          {t}
+        </span>
+      ))}
+    </div>
+  );
+  return (
+    <div style={{
+      borderTop:'2px solid var(--ink)',borderBottom:'2px solid var(--ink)',
+      background:'var(--yellow)',padding:'14px 0',overflow:'hidden',
+    }}>
+      <div className="marquee">{line}{line}</div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
