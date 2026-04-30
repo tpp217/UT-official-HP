@@ -212,6 +212,15 @@ function Contact(){
                 通常 3 営業日以内にご返信します
               </span>
             </div>
+
+            <p style={{marginTop:18,fontSize:11.5,color:'#555',lineHeight:1.7}}>
+              送信いただくことで、当社の
+              <a href="/privacy.html" target="_blank" rel="noopener noreferrer"
+                style={{textDecoration:'underline',fontWeight:700}}>
+                プライバシーポリシー
+              </a>
+              に同意いただいたものとみなします。
+            </p>
           </form>
           )}
         </div>
