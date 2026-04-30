@@ -1,10 +1,35 @@
 // Footer
 function Footer(){
+  // リンク先 href がまだ確定していない項目は href:'#' のまま残し、TODOコメントで明示。
+  // 個別ページが用意でき次第、各 href を差し替える。
   const cols = [
-    { t:'Services', items:['コーポレートサイト','LP・キャンペーン','業務用Webアプリ','スマホアプリ','SaaS・システム','ECサイト','システムリフォーム'] },
-    { t:'Company',  items:['私たちについて','メンバー','ブログ','プレスリリース','採用情報'] },
-    { t:'Contact',  items:['お問い合わせ','無料相談','資料ダウンロード','パートナー募集'] },
+    { t:'Services', items:[
+      { label:'LP・キャンペーン',     href:'#services' },
+      { label:'業務用Webアプリ',      href:'#services' },
+      { label:'スマホアプリ',         href:'#services' },
+      { label:'SaaS・システム',       href:'#services' },
+      { label:'ECサイト',             href:'#services' },
+      { label:'システムリフォーム',   href:'#reform'  },
+    ]},
+    { t:'Company',  items:[
+      { label:'私たちについて',       href:'#company' },
+      { label:'採用情報',             href:'#contact' }, // TODO: /careers ページ作成後に差し替え
+    ]},
+    { t:'Contact',  items:[
+      { label:'お問い合わせ',         href:'#contact' },
+      { label:'無料相談',             href:'#contact' },
+      { label:'パートナー募集',       href:'#contact' }, // TODO: /partners ページ作成後に差し替え
+    ]},
   ];
+
+  // SNSアカウントの実URLが揃ったら、href を差し替える
+  const socials = [
+    { label:'X',       href:'#' }, // TODO: 実URL
+    { label:'Note',    href:'#' }, // TODO: 実URL
+    { label:'GitHub',  href:'#' }, // TODO: 実URL
+    { label:'YouTube', href:'#' }, // TODO: 実URL
+  ];
+
   return (
     <footer style={{background:'var(--ink)',color:'#ccc',padding:'60px 0 24px'}}>
       <div className="wrap">
@@ -31,14 +56,21 @@ function Footer(){
               そしてAI変換によるシステムリフォーム。
             </p>
             <div style={{display:'flex',gap:8,marginTop:18}}>
-              {['X','Note','GitHub','YouTube'].map(s=>(
-                <a key={s} href="#" onClick={e=>e.preventDefault()}
-                  style={{width:36,height:36,borderRadius:10,
-                    border:'1.5px solid #444',display:'grid',placeItems:'center',
-                    fontSize:11,fontWeight:700,color:'#ccc'}}>
-                  {s[0]}
-                </a>
-              ))}
+              {socials.map(s=>{
+                const isPlaceholder = s.href === '#';
+                return (
+                  <a key={s.label} href={s.href}
+                    onClick={isPlaceholder ? (e=>e.preventDefault()) : undefined}
+                    target={isPlaceholder ? undefined : '_blank'}
+                    rel={isPlaceholder ? undefined : 'noopener noreferrer'}
+                    aria-label={s.label}
+                    style={{width:36,height:36,borderRadius:10,
+                      border:'1.5px solid #444',display:'grid',placeItems:'center',
+                      fontSize:11,fontWeight:700,color:'#ccc'}}>
+                    {s.label[0]}
+                  </a>
+                );
+              })}
             </div>
           </div>
           {cols.map(c=>(
@@ -48,8 +80,8 @@ function Footer(){
                 letterSpacing:'0.18em',marginBottom:14}}>{c.t}</div>
               <ul style={{listStyle:'none',padding:0,margin:0,display:'flex',flexDirection:'column',gap:10}}>
                 {c.items.map(it=>(
-                  <li key={it}><a href="#" onClick={e=>e.preventDefault()}
-                    style={{color:'#ddd',fontSize:13.5}}>{it}</a></li>
+                  <li key={it.label}><a href={it.href}
+                    style={{color:'#ddd',fontSize:13.5}}>{it.label}</a></li>
                 ))}
               </ul>
             </div>
@@ -60,9 +92,8 @@ function Footer(){
           fontFamily:'"Space Mono",monospace',letterSpacing:'0.1em'}}>
           <div>© 2026 UNIQ TRASH INC. ALL RIGHTS RESERVED.</div>
           <div style={{display:'flex',gap:16}}>
+            {/* TODO: /privacy ページ作成後に href を差し替え */}
             <a href="#" onClick={e=>e.preventDefault()} style={{color:'#777'}}>PRIVACY</a>
-            <a href="#" onClick={e=>e.preventDefault()} style={{color:'#777'}}>TERMS</a>
-            <a href="#" onClick={e=>e.preventDefault()} style={{color:'#777'}}>SITEMAP</a>
           </div>
         </div>
       </div>
