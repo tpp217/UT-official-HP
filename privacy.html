@@ -15,6 +15,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+<!-- Google Analytics 4 -->
+<!-- TODO: 本番の Measurement ID（G-XXXXXXXXXX 形式）に差し替え -->
+<script>
+  (function(){
+    var GA_ID = 'G-XXXXXXXXXX';
+    if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  })();
+</script>
+
 <style>
   :root{
     --bg:#f6f2e9;
@@ -147,9 +165,15 @@
       取得した個人情報は、利用目的の達成に必要な期間保管し、不要となった時点で速やかに消去します。具体的には、お問い合わせ対応終了後3年を目安に廃棄するものとします（契約成立等により別途定めがある場合を除きます）。
     </p>
 
-    <h2><span class="num">6</span>Cookie 等について</h2>
+    <h2><span class="num">6</span>Cookie および アクセス解析について</h2>
     <p>
-      本サイトは、現時点では Cookie や類似技術によるアクセス解析・トラッキングを行っておりません。今後、サービス向上を目的としてアクセス解析ツール（Google Analytics 等）を導入する場合は、本ポリシーを改定のうえ、利用方法および無効化の手段を改めて明示します。
+      本サイトは、サービス向上および利用状況の分析を目的として、Google LLC が提供する「Google Analytics 4」を利用する場合があります。Google Analytics は Cookie 等の技術を利用して匿名のアクセス情報（ページ閲覧数・滞在時間・参照元・端末情報など）を収集しますが、収集データから特定の個人が識別されることはありません。当社は IP アドレスの匿名化を有効化したうえで運用します。
+    </p>
+    <p>
+      Cookie によるデータ収集を望まない場合は、ブラウザの設定で Cookie を無効化するか、Google が提供する <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer">「Google Analytics オプトアウト アドオン」</a> をインストールすることで、本サイトでの計測を無効化できます。
+    </p>
+    <p>
+      Google Analytics の利用規約・プライバシーポリシーについては、Google 社の <a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a> および <a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer">Google Analytics 利用規約</a> をご確認ください。
     </p>
 
     <h2><span class="num">7</span>個人情報の開示・訂正・削除等</h2>
