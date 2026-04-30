@@ -38,11 +38,13 @@ export default function Contact() {
     }
 
     const payload = {
-      _subject: `【サイト問い合わせ】${company} ${name} 様`,
+      _subject: company
+        ? `【サイト問い合わせ】${company} ${name} 様`
+        : `【サイト問い合わせ】${name} 様`,
       _template: 'table',
       _captcha: 'false',
       _replyto: email,
-      会社名: company,
+      会社名: company || '-',
       お名前: name,
       メール: email,
       電話: phone || '-',
@@ -165,8 +167,8 @@ export default function Contact() {
                 gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
               }}>
                 <div className="field">
-                  <label>会社名 *</label>
-                  <input name="company" required placeholder="株式会社◯◯" disabled={status === 'sending'} />
+                  <label>会社名 (任意)</label>
+                  <input name="company" placeholder="株式会社◯◯" disabled={status === 'sending'} />
                 </div>
                 <div className="field">
                   <label>お名前 *</label>
