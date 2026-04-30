@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- 背景: paper -->
+  <rect width="1200" height="630" fill="#f6f2e9"/>
+  <!-- グリッド -->
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#141414" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- UTロゴタイル -->
+  <g transform="translate(72,72) rotate(-6 60 60)">
+    <rect x="0" y="0" width="120" height="120" rx="18" fill="#141414"/>
+    <text x="60" y="92" font-family="Archivo Black, Impact, 'Arial Black', sans-serif"
+          font-size="68" font-weight="900" text-anchor="middle" fill="#ffd23f"
+          letter-spacing="-2">UT</text>
+  </g>
+
+  <!-- ブランド名 -->
+  <text x="222" y="135" font-family="Archivo Black, Impact, 'Arial Black', sans-serif"
+        font-size="38" fill="#141414" letter-spacing="-1">Uniq Trash inc.</text>
+  <text x="222" y="170" font-family="'Space Mono', monospace"
+        font-size="16" fill="#141414" opacity="0.6" letter-spacing="2">ユニークトラッシュ · EST. 2015</text>
+
+  <!-- メインコピー -->
+  <text x="72" y="320" font-family="'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif"
+        font-size="86" font-weight="900" fill="#141414" letter-spacing="-3">業務のクセ、</text>
+  <!-- まるごと: ハイライト -->
+  <g transform="translate(72,360) rotate(-1.5 220 50)">
+    <rect x="0" y="0" width="440" height="100" rx="10" fill="#ffd23f"/>
+    <text x="220" y="78" font-family="'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif"
+          font-size="86" font-weight="900" text-anchor="middle" fill="#141414" letter-spacing="-3">まるごと</text>
+  </g>
+  <text x="72" y="552" font-family="'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif"
+        font-size="86" font-weight="900" fill="#141414" letter-spacing="-3">アプリに。</text>
+
+  <!-- 右下サブコピー -->
+  <text x="1128" y="585" font-family="'Space Mono', monospace"
+        font-size="18" fill="#141414" opacity="0.7" text-anchor="end" letter-spacing="2">ORIGINAL BUSINESS WEB APPS · SYSTEM REFORM</text>
+
+  <!-- 装飾の丸（ピンク） -->
+  <circle cx="1090" cy="135" r="60" fill="#ff5c8a" stroke="#141414" stroke-width="3"/>
+  <text x="1090" y="125" font-family="Archivo Black, Impact, 'Arial Black', sans-serif"
+        font-size="14" font-weight="900" fill="#fff" text-anchor="middle">SYSTEM</text>
+  <text x="1090" y="143" font-family="Archivo Black, Impact, 'Arial Black', sans-serif"
+        font-size="14" font-weight="900" fill="#fff" text-anchor="middle">REFORM</text>
+  <text x="1090" y="162" font-family="'Space Mono', monospace"
+        font-size="10" fill="#fff" text-anchor="middle" opacity="0.85">AI 移行</text>
+</svg>
