@@ -2,6 +2,9 @@
 function Contact(){
   const [services, setServices] = React.useState(new Set());
   const [budget, setBudget] = React.useState('');
+  const [status, setStatus] = React.useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = React.useState('');
+  const formRef = React.useRef(null);
 
   const toggleService = (s) => {
     const n = new Set(services);
@@ -11,6 +14,47 @@ function Contact(){
 
   const svcOptions = ['HP制作','業務用Webアプリ','スマホアプリ','ECサイト','システムリフォーム','ブランディング'];
   const budgets = ['〜50万','50–150万','150–400万','400万〜','相談したい'];
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (status === 'sending') return;
+
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      company: (fd.get('company') || '').toString().trim(),
+      name:    (fd.get('name')    || '').toString().trim(),
+      email:   (fd.get('email')   || '').toString().trim(),
+      phone:   (fd.get('phone')   || '').toString().trim(),
+      message: (fd.get('message') || '').toString().trim(),
+      website: (fd.get('website') || '').toString(), // honeypot
+      services: Array.from(services),
+      budget,
+    };
+
+    setStatus('sending');
+    setErrorMsg('');
+
+    try {
+      const resp = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!resp.ok) {
+        const data = await resp.json().catch(()=>({}));
+        throw new Error(data.error || `送信に失敗しました（${resp.status}）`);
+      }
+
+      setStatus('success');
+      if (formRef.current) formRef.current.reset();
+      setServices(new Set());
+      setBudget('');
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err.message || '送信に失敗しました');
+    }
+  };
 
   return (
     <section id="contact" style={{padding:'clamp(60px,10vw,120px) 0',
@@ -43,19 +87,44 @@ function Contact(){
 
         <div style={{display:'grid',gap:22,
           gridTemplateColumns:'minmax(0,1fr)'}}>
-          <form className="reveal" onSubmit={e=>{e.preventDefault();alert('送信ありがとうございます！（デモ）');}}
+          {status === 'success' ? (
+            <div className="reveal" role="status" aria-live="polite"
+              style={{background:'#fff',border:'2px solid var(--ink)',borderRadius:20,
+                padding:'clamp(28px,3vw,44px)',boxShadow:'8px 8px 0 var(--ink)'}}>
+              <div style={{fontFamily:'"Archivo Black",sans-serif',fontSize:'clamp(28px,3vw,40px)',lineHeight:1.1,marginBottom:14}}>
+                送信ありがとうございます！
+              </div>
+              <p style={{margin:0,fontSize:15,lineHeight:1.85,color:'#222'}}>
+                内容を確認のうえ、通常 3 営業日以内にご返信します。<br/>
+                ご記入いただいたメールアドレスに自動受領メールは届きませんのでご注意ください。
+              </p>
+              <button type="button" onClick={()=>setStatus('idle')}
+                className="btn btn-outline" style={{marginTop:22}}>
+                もう一度送る
+              </button>
+            </div>
+          ) : (
+          <form ref={formRef} className="reveal" onSubmit={onSubmit}
             style={{background:'#fff',border:'2px solid var(--ink)',borderRadius:20,
               padding:'clamp(24px,3vw,40px)',boxShadow:'8px 8px 0 var(--ink)'}}>
+
+            {/* honeypot（視覚的に隠す。bot対策） */}
+            <div aria-hidden="true" style={{position:'absolute',left:'-9999px',top:'-9999px',height:0,width:0,overflow:'hidden'}}>
+              <label>Website (do not fill)
+                <input type="text" name="website" tabIndex="-1" autoComplete="off"/>
+              </label>
+            </div>
+
             <div style={{display:'grid',gap:20,
               gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))'}}>
               <div className="field"><label>会社名 *</label>
-                <input required placeholder="株式会社◯◯"/></div>
+                <input name="company" required placeholder="株式会社◯◯" disabled={status==='sending'}/></div>
               <div className="field"><label>お名前 *</label>
-                <input required placeholder="山田 太郎"/></div>
+                <input name="name" required placeholder="山田 太郎" disabled={status==='sending'}/></div>
               <div className="field"><label>メール *</label>
-                <input type="email" required placeholder="you@company.com"/></div>
+                <input name="email" type="email" required placeholder="you@company.com" disabled={status==='sending'}/></div>
               <div className="field"><label>電話 (任意)</label>
-                <input type="tel" placeholder="03-0000-0000"/></div>
+                <input name="phone" type="tel" placeholder="03-0000-0000" disabled={status==='sending'}/></div>
             </div>
 
             <div className="field" style={{marginTop:6}}>
@@ -64,6 +133,7 @@ function Contact(){
                 {svcOptions.map(s=>(
                   <button type="button" key={s}
                     onClick={()=>toggleService(s)}
+                    disabled={status==='sending'}
                     className={'chip ' + (services.has(s)?'on':'')}>{s}</button>
                 ))}
               </div>
@@ -75,6 +145,7 @@ function Contact(){
                 {budgets.map(b=>(
                   <button type="button" key={b}
                     onClick={()=>setBudget(b)}
+                    disabled={status==='sending'}
                     className={'chip ' + (budget===b?'on':'')}>{b}</button>
                 ))}
               </div>
@@ -82,12 +153,28 @@ function Contact(){
 
             <div className="field">
               <label>ご相談内容 *</label>
-              <textarea required placeholder="現状の課題、理想の姿、スケジュール感など。ラフな書き方で大丈夫です。"/>
+              <textarea name="message" required disabled={status==='sending'}
+                placeholder="現状の課題、理想の姿、スケジュール感など。ラフな書き方で大丈夫です。"/>
             </div>
 
+            {status === 'error' && (
+              <div role="alert" style={{
+                marginBottom:14,padding:'12px 14px',border:'2px solid var(--ink)',
+                borderRadius:10,background:'#ffe2e8',fontSize:13.5,fontWeight:600,
+              }}>
+                {errorMsg || '送信に失敗しました。時間を置いて再度お試しください。'}
+              </div>
+            )}
+
             <div style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
-              <button type="submit" className="btn btn-primary" style={{background:'var(--pink)',borderColor:'var(--ink)'}}>
-                送信する →
+              <button type="submit" className="btn btn-primary"
+                disabled={status==='sending'}
+                style={{
+                  background:'var(--pink)',borderColor:'var(--ink)',
+                  opacity: status==='sending' ? 0.7 : 1,
+                  cursor: status==='sending' ? 'not-allowed' : 'pointer',
+                }}>
+                {status === 'sending' ? '送信中...' : '送信する →'}
               </button>
               <span style={{fontSize:12,color:'#555',
                 fontFamily:'"Space Mono",monospace'}}>
@@ -95,6 +182,7 @@ function Contact(){
               </span>
             </div>
           </form>
+          )}
         </div>
       </div>
     </section>
