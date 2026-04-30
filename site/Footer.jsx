@@ -92,8 +92,7 @@ function Footer(){
           fontFamily:'"Space Mono",monospace',letterSpacing:'0.1em'}}>
           <div>© 2026 UNIQ TRASH INC. ALL RIGHTS RESERVED.</div>
           <div style={{display:'flex',gap:16}}>
-            {/* TODO: /privacy ページ作成後に href を差し替え */}
-            <a href="#" onClick={e=>e.preventDefault()} style={{color:'#777'}}>PRIVACY</a>
+            <a href="/privacy.html" style={{color:'#777'}}>PRIVACY</a>
           </div>
         </div>
       </div>
