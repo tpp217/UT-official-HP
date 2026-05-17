@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react';
 
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/u.t.bluecolor@gmail.com';
+const CONTACT_ENDPOINT = '/api/contact';
 
 export default function Contact() {
   const [services, setServices] = useState(new Set());
@@ -38,26 +38,20 @@ export default function Contact() {
     }
 
     const payload = {
-      _subject: company
-        ? `【サイト問い合わせ】${company} ${name} 様`
-        : `【サイト問い合わせ】${name} 様`,
-      _template: 'table',
-      _captcha: 'false',
-      _replyto: email,
-      会社名: company || '-',
-      お名前: name,
-      メール: email,
-      電話: phone || '-',
-      'ご興味のあるサービス': Array.from(services).join(', ') || '-',
-      'ご予算感': budget || '-',
-      'ご相談内容': message,
+      company,
+      name,
+      email,
+      phone,
+      services: Array.from(services).join(', '),
+      budget,
+      message,
     };
 
     setStatus('sending');
     setErrorMsg('');
 
     try {
-      const resp = await fetch(FORMSUBMIT_ENDPOINT, {
+      const resp = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,8 +61,8 @@ export default function Contact() {
       });
 
       const data = await resp.json().catch(() => ({}));
-      if (!resp.ok || (data && data.success === 'false')) {
-        throw new Error(data.message || `送信に失敗しました（${resp.status}）`);
+      if (!resp.ok || data.success === false) {
+        throw new Error(data.error || `送信に失敗しました（${resp.status}）`);
       }
 
       setStatus('success');
