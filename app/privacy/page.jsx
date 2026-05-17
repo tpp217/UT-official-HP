@@ -109,7 +109,7 @@ export default function PrivacyPage() {
           <dt>事業者名</dt>
           <dd>株式会社ユニークトラッシュ</dd>
           <dt>所在地</dt>
-          <dd>東京都多摩市</dd>
+          <dd>福岡・東京</dd>
           <dt>連絡先</dt>
           <dd>
             <a href="mailto:u.t.bluecolor@gmail.com">u.t.bluecolor@gmail.com</a>

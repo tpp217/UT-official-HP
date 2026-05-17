@@ -10,7 +10,7 @@ export default function Company() {
     { k: '社名', v: '株式会社ユニークトラッシュ / Uniq Trash inc.' },
     { k: '設立', v: '2015年11月11日' },
     { k: '代表', v: '代表取締役　枦山 能人' },
-    { k: '所在地', v: '東京都多摩市' },
+    { k: '所在地', v: '福岡・東京' },
     { k: '事業内容', v: 'オリジナル業務用Webアプリ制作・HP制作・システムリフォーム・ブランディング' },
   ];
 
@@ -35,7 +35,7 @@ export default function Company() {
             lineHeight: 1.85, color: '#ddd',
           }}>
             「ユニークトラッシュ」は、
-            <span style={{ color: 'var(--yellow)', fontWeight: 700 }}>&quot;他の誰のものでもない、その会社だけのゴミ(=味)&quot;</span>
+            <span style={{ color: 'var(--yellow)', fontWeight: 700 }}>&quot;他の誰のものでもない、オリジナルの味&quot;</span>
             という意味。他社に捨てられがちな個性や業務のクセこそが、本当の資産だと私たちは信じています。
           </p>
         </div>
