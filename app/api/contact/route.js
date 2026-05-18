@@ -28,7 +28,21 @@ function buildHtml(d) {
   const tbody = rows.map(([k, v]) =>
     `<tr><th align="left" style="padding:8px 12px;background:#f4f4f4;border:1px solid #ddd;white-space:nowrap">${escapeHtml(k)}</th><td style="padding:8px 12px;border:1px solid #ddd;white-space:pre-wrap">${escapeHtml(v)}</td></tr>`
   ).join('');
-  return `<table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;width:100%;max-width:640px"><tbody>${tbody}</tbody></table>`;
+  return `<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>サイト問い合わせ</title></head><body><table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;width:100%;max-width:640px"><tbody>${tbody}</tbody></table></body></html>`;
+}
+
+function buildText(d) {
+  return [
+    `会社名: ${d.company || '-'}`,
+    `お名前: ${d.name}`,
+    `メール: ${d.email}`,
+    `電話: ${d.phone || '-'}`,
+    `ご興味のあるサービス: ${d.services || '-'}`,
+    `ご予算感: ${d.budget || '-'}`,
+    '',
+    'ご相談内容:',
+    d.message,
+  ].join('\n');
 }
 
 export async function POST(req) {
@@ -65,12 +79,14 @@ export async function POST(req) {
     ? `【サイト問い合わせ】${company} ${name} 様`
     : `【サイト問い合わせ】${name} 様`;
 
+  const data = { company, name, email, phone, services, budget, message };
   const payload = {
     from: FROM,
     to: [TO],
     reply_to: email,
     subject,
-    html: buildHtml({ company, name, email, phone, services, budget, message }),
+    html: buildHtml(data),
+    text: buildText(data),
   };
 
   const resp = await fetch('https://api.resend.com/emails', {
