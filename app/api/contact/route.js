@@ -99,8 +99,11 @@ export async function POST(req) {
   });
 
   if (!resp.ok) {
+    // 失敗詳細はサーバ側ログにのみ残し、クライアントには汎用メッセージのみ返す
+    // （上流レスポンスの内部情報をクライアントへ露出させない）
     const text = await resp.text().catch(() => '');
-    return Response.json({ success: false, error: `送信に失敗しました（${resp.status}）`, detail: text.slice(0, 200) }, { status: 502 });
+    console.error('Resend送信失敗:', resp.status, text.slice(0, 500));
+    return Response.json({ success: false, error: `送信に失敗しました（${resp.status}）` }, { status: 502 });
   }
 
   return Response.json({ success: true });
