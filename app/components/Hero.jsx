@@ -9,12 +9,31 @@ export default function Hero() {
   useEffect(() => {
     const sticker = stickerRef.current;
     if (!sticker) return;
+    // ホバー可能なポインタ環境（PC等）でのみ追従を有効化。
+    // モバイル/タッチでは mousemove が無意味なため登録しない。
+    if (typeof window.matchMedia === 'function' &&
+        !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
+    // mousemove ごとの style 更新を rAF で間引く
+    let rafId = null;
+    let lastX = 0;
+    let lastY = 0;
+    const apply = () => {
+      rafId = null;
+      sticker.style.left = lastX + 'px';
+      sticker.style.top = lastY + 'px';
+    };
     const onMove = (e) => {
-      sticker.style.left = e.clientX + 'px';
-      sticker.style.top = e.clientY + 'px';
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (rafId === null) rafId = window.requestAnimationFrame(apply);
     };
     window.addEventListener('mousemove', onMove);
-    return () => window.removeEventListener('mousemove', onMove);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
