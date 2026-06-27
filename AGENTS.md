@@ -42,7 +42,7 @@ UT-official-HP/
 - 本番: uniquetrash.inc 公開ドメイン（Vercel）
 - main マージで Vercel 自動デプロイ
 
-Git / Vercel 運用はグローバル `~/.Codex/AGENTS.md` に準拠。
+Git / Vercel 運用はグローバル `~/.claude/CLAUDE.md` に準拠。
 
 ## TODO
 
