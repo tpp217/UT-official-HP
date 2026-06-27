@@ -259,13 +259,12 @@ export default function JoinPage() {
               <span>CAREERS & PARTNERS · UNIQ TRASH INC.</span>
             </div>
 
-            <h1 className="mega">
-              作る人と、
-              <br />
-              <span style={{ background: 'var(--yellow)', padding: '0 0.14em', borderRadius: 8 }}>
-                届ける人
+            <h1 className="mega join-hero-title">
+              <span className="join-title-line">作る人と、</span>
+              <span className="join-title-line join-title-line-strong">
+                <span className="join-title-highlight">届ける人</span>
+                <span>を募集。</span>
               </span>
-              を募集。
             </h1>
 
             <div
