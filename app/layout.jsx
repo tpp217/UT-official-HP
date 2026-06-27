@@ -41,10 +41,10 @@ export const viewport = {
   themeColor: '#f6f2e9',
 };
 
-// GA4 — 本番ID（G-XXXXXXXXXX 形式）に差替えるまで送信されない
+// GA4
 const GA_SNIPPET = `
 (function(){
-  var GA_ID = 'G-XXXXXXXXXX';
+  var GA_ID = 'G-70XWKG8YLB';
   if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return;
   var s = document.createElement('script');
   s.async = true;
