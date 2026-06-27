@@ -189,6 +189,26 @@ h2.section{margin:0;font-weight:900;line-height:0.95;letter-spacing:-0.03em;
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s, transform .6s}
 .reveal.in{opacity:1;transform:none}
 
+/* 採用ページはカード数が多いため、動きを軽く保つ */
+.join-page .nb-card{transition:transform .18s ease, box-shadow .18s ease}
+.join-page .nb-card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.join-page .tile{transition:transform .18s ease, box-shadow .18s ease}
+.join-page .tile:hover{transform:translateY(-3px);box-shadow:5px 6px 0 var(--ink)}
+.join-page .reveal{transform:translateY(10px);transition:opacity .35s ease, transform .35s ease}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal,
+  .reveal.in,
+  .tile,
+  .tile .glyph,
+  .nb-card,
+  .marquee-track{
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
 /* === Privacy page (/privacy) === */
 .privacy-body{line-height:1.85}
 .privacy-top{

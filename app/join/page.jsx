@@ -225,7 +225,7 @@ export default function JoinPage() {
       <Reveal />
       <Header />
 
-      <main>
+      <main className="join-page">
         <section id="top" className="paper-grid" style={{ position: 'relative', overflow: 'hidden' }}>
           <div className="wrap" style={{ padding: '56px clamp(20px,4vw,56px) 72px', position: 'relative' }}>
             <div
