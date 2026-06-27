@@ -2,21 +2,21 @@ export default function Footer() {
   // 個別ページが用意でき次第、各 href を差し替える
   const cols = [
     { t: 'Services', items: [
-      { label: 'LP・キャンペーン', href: '#services' },
-      { label: '業務用Webアプリ', href: '#services' },
-      { label: 'スマホアプリ', href: '#services' },
-      { label: 'SaaS・システム', href: '#services' },
-      { label: 'ECサイト', href: '#services' },
-      { label: 'システムリフォーム', href: '#reform' },
+      { label: 'LP・キャンペーン', href: '/#services' },
+      { label: '業務用Webアプリ', href: '/#services' },
+      { label: 'スマホアプリ', href: '/#services' },
+      { label: 'SaaS・システム', href: '/#services' },
+      { label: 'ECサイト', href: '/#services' },
+      { label: 'システムリフォーム', href: '/#reform' },
     ]},
     { t: 'Company', items: [
-      { label: '私たちについて', href: '#company' },
-      { label: '採用情報', href: '#contact' }, // TODO: /careers ページ作成後に差し替え
+      { label: '私たちについて', href: '/#company' },
+      { label: '採用情報', href: '/join#careers' },
     ]},
     { t: 'Contact', items: [
-      { label: 'お問い合わせ', href: '#contact' },
-      { label: '無料相談', href: '#contact' },
-      { label: 'パートナー募集', href: '#contact' }, // TODO: /partners ページ作成後に差し替え
+      { label: 'お問い合わせ', href: '/#contact' },
+      { label: '無料相談', href: '/#contact' },
+      { label: 'パートナー募集', href: '/join#partners' },
     ]},
   ];
 

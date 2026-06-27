@@ -163,6 +163,28 @@ h2.section{margin:0;font-weight:900;line-height:0.95;letter-spacing:-0.03em;
   .nav-toggle{display:none !important}
 }
 
+@media (max-width: 760px){
+  .join-hero-grid,
+  .join-two-col{
+    grid-template-columns:1fr !important;
+  }
+  #entry .nb-card{
+    grid-template-columns:1fr !important;
+  }
+  #entry .btn{
+    justify-content:center;
+    width:100%;
+  }
+}
+
+@media (max-width: 620px){
+  #careers .nb-card > div,
+  #partners .nb-card > div{
+    grid-template-columns:1fr !important;
+    gap:6px !important;
+  }
+}
+
 /* fade-in on scroll */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s, transform .6s}
 .reveal.in{opacity:1;transform:none}
