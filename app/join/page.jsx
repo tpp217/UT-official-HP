@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 export const metadata = {
   title: '採用情報・代理店募集 | 株式会社ユニークトラッシュ',
   description:
-    '株式会社ユニークトラッシュのSE採用と、Web制作・業務アプリ開発を提案いただくパートナー募集ページです。',
+    '株式会社ユニークトラッシュでは、業務用WebアプリやWebサイト制作に関わるSEメンバーと提案パートナーを募集しています。',
   alternates: { canonical: '/join' },
   openGraph: {
     title: '採用情報・代理店募集 | 株式会社ユニークトラッシュ',
     description:
-      'SE採用とパートナー募集。現場の課題を仕組みに変える仲間と、必要な企業へ提案いただくパートナーを募集しています。',
+      'SE採用とパートナー募集。現場の課題を仕組みに変える仲間と、企業の課題解決を一緒に提案するパートナーを募集しています。',
     url: '/join',
   },
 };
@@ -27,29 +27,29 @@ const careerRows = [
   ['仕事内容', '業務用Webアプリ、社内システム、Webサイト、既存システム刷新の設計・開発・運用'],
   ['主な技術', 'Next.js / React / Node.js / PostgreSQL / Supabase / Vercel / GitHub / Stripe / LINE連携'],
   ['歓迎経験', 'Webアプリ開発、業務システム開発、顧客折衝、要件定義、DB設計、運用保守など'],
-  ['契約形態', '正社員、業務委託、副業など、関わり方は相談可能'],
-  ['働き方', 'リモート中心。打ち合わせはオンラインで行います'],
+  ['契約形態', '正社員 / 業務委託 / 副業。経験や稼働時間に応じて個別相談'],
+  ['働き方', 'リモート中心。打ち合わせはオンラインが基本'],
 ];
 
 const partnerMerits = [
   {
     n: '01',
-    title: '顧客課題から提案できる',
-    body: 'Webサイト制作から業務アプリ、EC、既存システム刷新まで、顧客の課題に合わせて提案できます。',
+    title: '顧客課題から提案',
+    body: 'Webサイト制作、業務アプリ、EC、既存システム刷新まで。顧客の課題に合わせて提案の幅を広げられます。',
     bg: 'var(--yellow)',
     ink: 'var(--ink)',
   },
   {
     n: '02',
-    title: '技術面は当社が支援',
-    body: '要件整理、見積、設計、実装、公開後の改善まで、技術側の対応は当社が支援します。',
+    title: '技術面は当社が担当',
+    body: '要件整理、見積、設計、実装、公開後の改善まで、技術側の対応は当社が担います。',
     bg: 'var(--blue)',
     ink: '#fff',
   },
   {
     n: '03',
-    title: '紹介から始められる',
-    body: '紹介のみ、商談同席、共同提案など、既存の営業スタイルに合わせて関わり方を選べます。',
+    title: '紹介からスタート',
+    body: '紹介のみ、商談同席、共同提案など、既存の営業スタイルに合わせて連携します。',
     bg: 'var(--mint)',
     ink: 'var(--ink)',
   },
@@ -58,10 +58,10 @@ const partnerMerits = [
 const partnerRows = [
   ['対象', '広告代理店、Web制作会社、士業、コンサル会社、法人営業会社、既存顧客を持つ個人事業主'],
   ['募集形態', '紹介パートナー / 販売代理店 / 共同提案パートナー'],
-  ['提案できる領域', 'コーポレートサイト、LP、業務用Webアプリ、EC、既存システム刷新、運用保守'],
-  ['当社の支援', '提案資料、初回商談同席、技術ヒアリング、見積作成、納品後フォロー'],
+  ['提案領域', 'コーポレートサイト、LP、業務用Webアプリ、EC、既存システム刷新、運用保守'],
+  ['支援範囲', '提案資料、初回商談同席、技術ヒアリング、見積作成、納品後フォロー'],
   ['報酬', '案件内容・関与範囲に応じて個別相談'],
-  ['対応地域', '全国対応。オンライン商談を基本に進行します'],
+  ['対応地域', '全国対応。商談はオンライン中心'],
 ];
 
 function Header() {
@@ -280,7 +280,7 @@ export default function JoinPage() {
               <p style={{ margin: 0, fontSize: 'clamp(15px,1.25vw,17px)', lineHeight: 1.85, fontWeight: 500 }}>
                 ユニークトラッシュは、業務用Webアプリ、Webサイト制作、既存システム刷新を扱う会社です。
                 現場の困りごとを仕様に変える<strong>SE系メンバー</strong>と、
-                必要としている企業へ提案いただく<strong>パートナー</strong>を募集しています。
+                企業の課題解決を一緒に提案する<strong>パートナー</strong>を募集しています。
               </p>
               <div className="join-hero-actions" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <a href="#careers" className="btn btn-primary">
@@ -302,8 +302,8 @@ export default function JoinPage() {
             >
               {[
                 ['SE / WEB APP', '現場の課題を、使われる仕組みに変える。', 'var(--pink)', '#fff'],
-                ['PARTNER', '紹介・共同提案・販売代理まで対応。', 'var(--yellow)', 'var(--ink)'],
-                ['REMOTE FIRST', '全国からオンライン中心で参加できます。', 'var(--mint)', 'var(--ink)'],
+                ['PARTNER', '紹介・共同提案・販売代理で連携。', 'var(--yellow)', 'var(--ink)'],
+                ['REMOTE FIRST', '全国からオンライン中心で参画。', 'var(--mint)', 'var(--ink)'],
               ].map(([title, body, bg, ink], index) => (
                 <article
                   key={title}
@@ -339,7 +339,7 @@ export default function JoinPage() {
             <SectionHeading
               label="CAREERS · SE RECRUIT"
               dot="var(--blue)"
-              copy="担当領域、技術スタック、働き方をまとめています。正社員だけでなく、業務委託や副業での参加も相談できます。"
+              copy="業務を理解し、仕様に落とし、運用まで見届ける仕事です。正社員、業務委託、副業など、関わり方は個別に相談します。"
             >
               SE採用。
               <br />
@@ -396,7 +396,7 @@ export default function JoinPage() {
             <SectionHeading
               label="PARTNER PROGRAM · AGENCY"
               dot="var(--pink)"
-              copy="紹介・共同提案・販売代理まで、関わり方は柔軟です。提案できる領域と当社の支援内容をまとめています。"
+              copy="顧客接点を持つ企業・個人の方と、紹介・共同提案・販売代理などの形で連携します。"
             >
               代理店募集。
               <br />
@@ -434,7 +434,7 @@ export default function JoinPage() {
             <SectionHeading
               label="FLOW · HOW TO START"
               dot="var(--yellow)"
-              copy="まずは短い面談で、経験・顧客層・関わり方を確認します。条件が合えば、小さな案件から始めます。"
+              copy="最初の面談で、経験・顧客層・関わり方をすり合わせます。条件が合う場合は、小さな案件から始めます。"
             >
               はじめ方は、
               <br />
@@ -443,8 +443,8 @@ export default function JoinPage() {
 
             <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
               {[
-                ['01', '問い合わせ', 'フォームで「採用応募」または「代理店募集」を選び、現在の状況をお知らせください。'],
-                ['02', 'オンライン面談', '経験、得意領域、希望する関わり方、案件イメージを確認します。'],
+                ['01', '問い合わせ', 'フォームで「採用応募」または「代理店募集」を選択。現在の状況や希望を簡単に共有します。'],
+                ['02', 'オンライン面談', '経験、得意領域、希望する関わり方、案件イメージをすり合わせます。'],
                 ['03', '小さく開始', '副業、紹介1件、共同提案など、無理のない範囲から始めます。'],
               ].map(([n, title, body]) => (
                 <article key={n} className="nb-card reveal" style={{ background: '#fff', padding: 22 }}>
@@ -481,8 +481,8 @@ export default function JoinPage() {
                   合う形を決めます。
                 </h2>
                 <p style={{ margin: '16px 0 0', fontSize: 15, lineHeight: 1.8, color: '#333' }}>
-                  お問い合わせフォームで、採用応募または代理店募集を選んで送信してください。
-                  経歴書、会社資料、提案したい案件がある場合は、本文に概要を添えてください。
+                  採用応募とパートナー相談は、お問い合わせフォームから受け付けています。
+                  経歴書、会社資料、提案したい案件がある場合は、本文に概要をご記入ください。
                 </p>
               </div>
               <a href="/#contact" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>
