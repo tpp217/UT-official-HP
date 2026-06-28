@@ -17,6 +17,7 @@ export default function Nav() {
     { href: '#reform', en: 'Reform', jp: 'リフォーム' },
     { href: '#flow', en: 'Flow', jp: '制作フロー' },
     { href: '#company', en: 'Company', jp: '会社概要' },
+    { href: '/join', en: 'Join', jp: '採用/代理店' },
   ];
 
   return (
