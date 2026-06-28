@@ -99,7 +99,7 @@ export default function Contact() {
       background: 'var(--yellow)', borderBottom: '2px solid var(--ink)',
       position: 'relative', overflow: 'hidden',
     }}>
-      <svg viewBox="0 0 200 200" style={{
+      <svg className="contact-orbit" viewBox="0 0 200 200" style={{
         position: 'absolute', top: -30, right: -30, width: 240, height: 240, opacity: 0.5,
       }}>
         <circle cx="100" cy="100" r="90" fill="none" stroke="var(--ink)" strokeWidth="2" strokeDasharray="6 6" />

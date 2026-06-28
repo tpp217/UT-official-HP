@@ -144,7 +144,7 @@ function Header() {
           ))}
         </nav>
 
-        <a href="#entry" className="btn btn-primary" style={{ padding: '10px 18px', fontSize: 13 }}>
+        <a href="#entry" className="btn btn-primary join-header-cta" style={{ padding: '10px 18px', fontSize: 13 }}>
           相談する →
         </a>
       </div>
@@ -254,7 +254,7 @@ export default function JoinPage() {
               WORK
             </div>
 
-            <div className="sec-label" style={{ marginBottom: 20 }}>
+            <div className="sec-label join-hero-label" style={{ marginBottom: 20 }}>
               <span className="dot" style={{ background: 'var(--pink)' }} />
               <span>CAREERS & PARTNERS · UNIQ TRASH INC.</span>
             </div>
@@ -282,7 +282,7 @@ export default function JoinPage() {
                 現場の困りごとを仕様に変える<strong>SE系メンバー</strong>と、
                 必要としている会社へ商材を届ける<strong>代理店パートナー</strong>を募集しています。
               </p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <div className="join-hero-actions" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <a href="#careers" className="btn btn-primary">
                   採用を見る
                 </a>
