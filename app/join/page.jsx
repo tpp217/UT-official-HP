@@ -339,7 +339,7 @@ export default function JoinPage() {
             <SectionHeading
               label="CAREERS · SE RECRUIT"
               dot="var(--blue)"
-              copy="募集要項だけでなく、どんな仕事を任せたいかが伝わるように、開発内容・技術・向いている人をまとめました。"
+              copy="開発内容、使う技術、向いている人を先に確認できます。副業や業務委託からの相談も歓迎します。"
             >
               SE採用。
               <br />
@@ -394,7 +394,7 @@ export default function JoinPage() {
             <SectionHeading
               label="PARTNER PROGRAM · AGENCY"
               dot="var(--pink)"
-              copy="代理店募集ページで重視される、商材の売りやすさ・支援範囲・問い合わせまでの流れを1ページ内で分かるようにしました。"
+              copy="扱える商材、支援範囲、組み方を先に確認できます。紹介だけ、共同提案、販売代理のいずれも相談可能です。"
             >
               代理店募集。
               <br />
@@ -441,7 +441,7 @@ export default function JoinPage() {
 
             <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
               {[
-                ['01', '問い合わせ', '採用・代理店どちらかを明記してご連絡ください。'],
+                ['01', '問い合わせ', 'フォームの種別で「採用応募」または「代理店募集」を選んで送信してください。'],
                 ['02', 'オンライン面談', '経験、得意領域、組み方、案件イメージをすり合わせます。'],
                 ['03', '小さく開始', '副業・紹介1件・共同提案など、始めやすい形から進めます。'],
               ].map(([n, title, body]) => (
@@ -479,7 +479,7 @@ export default function JoinPage() {
                   まずは相談から。
                 </h2>
                 <p style={{ margin: '16px 0 0', fontSize: 15, lineHeight: 1.8, color: '#333' }}>
-                  お問い合わせフォームの「ご相談内容」に、採用希望または代理店希望と書いてください。
+                  お問い合わせフォームの「お問い合わせ種別」で、採用応募または代理店募集を選べます。
                   経歴書や提案資料がある場合は、その旨も添えてください。
                 </p>
               </div>

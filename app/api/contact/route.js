@@ -17,6 +17,7 @@ function escapeHtml(s) {
 
 function buildHtml(d) {
   const rows = [
+    ['お問い合わせ種別', d.category || '-'],
     ['会社名', d.company || '-'],
     ['お名前', d.name],
     ['メール', d.email],
@@ -33,6 +34,7 @@ function buildHtml(d) {
 
 function buildText(d) {
   return [
+    `お問い合わせ種別: ${d.category || '-'}`,
     `会社名: ${d.company || '-'}`,
     `お名前: ${d.name}`,
     `メール: ${d.email}`,
@@ -72,14 +74,16 @@ export async function POST(req) {
 
   const company = (body.company || '').toString().trim();
   const phone = (body.phone || '').toString().trim();
+  const category = (body.category || '').toString().trim();
   const services = (body.services || '').toString().trim();
   const budget = (body.budget || '').toString().trim();
 
+  const subjectPrefix = category ? `【サイト問い合わせ:${category}】` : '【サイト問い合わせ】';
   const subject = company
-    ? `【サイト問い合わせ】${company} ${name} 様`
-    : `【サイト問い合わせ】${name} 様`;
+    ? `${subjectPrefix}${company} ${name} 様`
+    : `${subjectPrefix}${name} 様`;
 
-  const data = { company, name, email, phone, services, budget, message };
+  const data = { category, company, name, email, phone, services, budget, message };
   const payload = {
     from: FROM,
     to: [TO],
