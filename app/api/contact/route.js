@@ -2,12 +2,36 @@
 // 環境変数:
 //   RESEND_API_KEY  - Resend の API キー（必須）
 //   CONTACT_TO      - 受信メールアドレス（デフォルト u.t.bluecolor@gmail.com）
+//   CONTACT_TO_PROJECTS  - 制作・開発相談の通知先（任意、未設定時は CONTACT_TO）
+//   CONTACT_TO_CAREERS   - 採用応募の通知先（任意、未設定時は CONTACT_TO）
+//   CONTACT_TO_PARTNERS  - 代理店募集の通知先（任意、未設定時は CONTACT_TO）
+//   CONTACT_TO_OTHER     - その他の通知先（任意、未設定時は CONTACT_TO）
 //   CONTACT_FROM    - 送信元メールアドレス（デフォルト onboarding@resend.dev、Resend で uniq-trash.com を verify 後は noreply@uniq-trash.com 等に差し替え）
 
 export const runtime = 'nodejs';
 
 const TO = process.env.CONTACT_TO || 'u.t.bluecolor@gmail.com';
 const FROM = process.env.CONTACT_FROM || 'Uniq Trash <onboarding@resend.dev>';
+const CATEGORY_TO_ENV = {
+  '制作・開発の相談': 'CONTACT_TO_PROJECTS',
+  '採用応募': 'CONTACT_TO_CAREERS',
+  '代理店募集': 'CONTACT_TO_PARTNERS',
+  'その他': 'CONTACT_TO_OTHER',
+};
+
+function parseRecipients(value) {
+  return String(value || '')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function resolveRecipients(category) {
+  const categoryEnv = CATEGORY_TO_ENV[category];
+  const categoryRecipients = categoryEnv ? parseRecipients(process.env[categoryEnv]) : [];
+  const defaultRecipients = parseRecipients(TO);
+  return categoryRecipients.length > 0 ? categoryRecipients : defaultRecipients;
+}
 
 function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({
@@ -84,9 +108,10 @@ export async function POST(req) {
     : `${subjectPrefix}${name} 様`;
 
   const data = { category, company, name, email, phone, services, budget, message };
+  const recipients = resolveRecipients(category);
   const payload = {
     from: FROM,
-    to: [TO],
+    to: recipients,
     reply_to: email,
     subject,
     html: buildHtml(data),

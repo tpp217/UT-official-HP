@@ -158,6 +158,7 @@ h2.section{margin:0;font-weight:900;line-height:0.95;letter-spacing:-0.03em;
 @media (max-width: 900px){
   .nav-inline{display:none !important}
   .nav-toggle{display:inline-flex !important}
+  .cursor-sticker{display:none !important}
 }
 @media (min-width: 901px){
   .nav-toggle{display:none !important}
