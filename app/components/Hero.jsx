@@ -165,7 +165,7 @@ export default function Hero() {
                 </b>
                 —— それが私たちの「システムリフォーム」です。
               </p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <div className="hero-actions" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <a href="#services" className="btn btn-primary">
                   サービスを見る
                 </a>

@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 const CONTACT_ENDPOINT = '/api/contact';
 
 export default function Contact() {
+  const [category, setCategory] = useState('');
   const [services, setServices] = useState(new Set());
   const [budget, setBudget] = useState('');
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
@@ -17,7 +18,16 @@ export default function Contact() {
     setServices(n);
   };
 
+  const selectCategory = (item) => {
+    setCategory(item);
+    if (status === 'error' && errorMsg === 'お問い合わせ種別を選択してください') {
+      setStatus('idle');
+      setErrorMsg('');
+    }
+  };
+
   const svcOptions = ['HP制作', '業務用Webアプリ', 'スマホアプリ', 'ECサイト', 'システムリフォーム', 'ブランディング'];
+  const categoryOptions = ['制作・開発の相談', '採用応募', '代理店募集', 'その他'];
   const budgets = ['〜50万', '50–150万', '150–400万', '400万〜', '相談したい'];
 
   const onSubmit = async (e) => {
@@ -37,11 +47,18 @@ export default function Contact() {
       return;
     }
 
+    if (!category) {
+      setStatus('error');
+      setErrorMsg('お問い合わせ種別を選択してください');
+      return;
+    }
+
     const payload = {
       company,
       name,
       email,
       phone,
+      category,
       services: Array.from(services).join(', '),
       budget,
       message,
@@ -67,6 +84,7 @@ export default function Contact() {
 
       setStatus('success');
       if (formRef.current) formRef.current.reset();
+      setCategory('');
       setServices(new Set());
       setBudget('');
     } catch (err) {
@@ -81,7 +99,7 @@ export default function Contact() {
       background: 'var(--yellow)', borderBottom: '2px solid var(--ink)',
       position: 'relative', overflow: 'hidden',
     }}>
-      <svg viewBox="0 0 200 200" style={{
+      <svg className="contact-orbit" viewBox="0 0 200 200" style={{
         position: 'absolute', top: -30, right: -30, width: 240, height: 240, opacity: 0.5,
       }}>
         <circle cx="100" cy="100" r="90" fill="none" stroke="var(--ink)" strokeWidth="2" strokeDasharray="6 6" />
@@ -175,6 +193,23 @@ export default function Contact() {
                 <div className="field">
                   <label>電話 (任意)</label>
                   <input name="phone" type="tel" placeholder="03-0000-0000" disabled={status === 'sending'} />
+                </div>
+              </div>
+
+              <div className="field" style={{ marginTop: 6 }}>
+                <label>お問い合わせ種別 *</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 6 }}>
+                  {categoryOptions.map((item) => (
+                    <button
+                      type="button"
+                      key={item}
+                      onClick={() => selectCategory(item)}
+                      disabled={status === 'sending'}
+                      className={'chip ' + (category === item ? 'on' : '')}
+                    >
+                      {item}
+                    </button>
+                  ))}
                 </div>
               </div>
 

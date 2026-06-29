@@ -5,63 +5,63 @@ import Footer from '../components/Footer';
 export const metadata = {
   title: '採用情報・代理店募集 | 株式会社ユニークトラッシュ',
   description:
-    '株式会社ユニークトラッシュのSE採用情報と、Web制作・業務アプリ開発を紹介いただく代理店パートナー募集ページです。',
+    '株式会社ユニークトラッシュでは、業務用WebアプリやWebサイト制作に関わるSEメンバーと提案パートナーを募集しています。',
   alternates: { canonical: '/join' },
   openGraph: {
     title: '採用情報・代理店募集 | 株式会社ユニークトラッシュ',
     description:
-      'SE採用と代理店パートナー募集。現場のクセをアプリにする仲間と、必要な会社へ届けるパートナーを募集しています。',
+      'SE採用とパートナー募集。現場の課題を仕組みに変える仲間と、企業の課題解決を一緒に提案するパートナーを募集しています。',
     url: '/join',
   },
 };
 
 const fitItems = [
-  '現場の業務を観察して、仕様に落とし込むのが好き',
-  '小さく作って、実運用で改善する進め方が合う',
-  'AIや自動化を、実務に効く形で使いたい',
-  '古いシステムやExcel運用の置き換えに興味がある',
+  '業務の流れを聞き取り、課題を仕様に落とし込める',
+  '小さく作り、使われ方を見ながら改善したい',
+  'AIや自動化を、現場の時短やミス削減につなげたい',
+  'Excel運用や古いシステムの置き換えに前向き',
 ];
 
 const careerRows = [
   ['職種', 'システムエンジニア / Webアプリケーションエンジニア'],
-  ['仕事内容', '業務用Webアプリ、社内システム、HP・LP、レガシーシステム移行の設計・開発・運用'],
+  ['仕事内容', '業務用Webアプリ、社内システム、Webサイト、既存システム刷新の設計・開発・運用'],
   ['主な技術', 'Next.js / React / Node.js / PostgreSQL / Supabase / Vercel / GitHub / Stripe / LINE連携'],
-  ['歓迎経験', 'Webアプリ開発、業務システム開発、顧客折衝、要件定義、DB設計、運用保守のいずれか'],
-  ['雇用形態', '正社員 / 業務委託 / 副業からの参加も相談可'],
-  ['勤務地', 'リモート中心。必要に応じてオンラインMTGで進行'],
+  ['歓迎経験', 'Webアプリ開発、業務システム開発、顧客折衝、要件定義、DB設計、運用保守など'],
+  ['契約形態', '正社員 / 業務委託 / 副業。経験や稼働時間に応じて個別相談'],
+  ['働き方', 'リモート中心。打ち合わせはオンラインが基本'],
 ];
 
 const partnerMerits = [
   {
     n: '01',
-    title: '提案しやすい商材',
-    body: 'HP制作だけでなく、業務アプリ、EC、システムリフォームまで相談を広げられます。',
+    title: '顧客課題から提案',
+    body: 'Webサイト制作、業務アプリ、EC、既存システム刷新まで。顧客の課題に合わせて提案の幅を広げられます。',
     bg: 'var(--yellow)',
     ink: 'var(--ink)',
   },
   {
     n: '02',
-    title: '制作・技術は丸投げOK',
-    body: '要件整理、見積、設計、実装、公開後の改善まで、技術側は当社が担当します。',
+    title: '技術面は当社が担当',
+    body: '要件整理、見積、設計、実装、公開後の改善まで、技術側の対応は当社が担います。',
     bg: 'var(--blue)',
     ink: '#fff',
   },
   {
     n: '03',
-    title: '紹介だけでも歓迎',
-    body: '営業代行、紹介、共同提案など、既存の顧客接点に合わせた形で組めます。',
+    title: '紹介からスタート',
+    body: '紹介のみ、商談同席、共同提案など、既存の営業スタイルに合わせて連携します。',
     bg: 'var(--mint)',
     ink: 'var(--ink)',
   },
 ];
 
 const partnerRows = [
-  ['対象', '広告代理店、Web制作会社、士業、コンサル会社、地域の法人営業会社、既存顧客を持つ個人事業主'],
+  ['対象', '広告代理店、Web制作会社、士業、コンサル会社、法人営業会社、既存顧客を持つ個人事業主'],
   ['募集形態', '紹介パートナー / 販売代理店 / 共同提案パートナー'],
-  ['扱える商材', 'コーポレートサイト、LP、業務用Webアプリ、EC、システムリフォーム、運用保守'],
-  ['支援内容', '提案資料、初回商談同席、技術ヒアリング、見積作成、納品後フォロー'],
+  ['提案領域', 'コーポレートサイト、LP、業務用Webアプリ、EC、既存システム刷新、運用保守'],
+  ['支援範囲', '提案資料、初回商談同席、技術ヒアリング、見積作成、納品後フォロー'],
   ['報酬', '案件内容・関与範囲に応じて個別相談'],
-  ['地域', '全国対応。オンライン商談を基本に進行'],
+  ['対応地域', '全国対応。商談はオンライン中心'],
 ];
 
 function Header() {
@@ -144,8 +144,8 @@ function Header() {
           ))}
         </nav>
 
-        <a href="#entry" className="btn btn-primary" style={{ padding: '10px 18px', fontSize: 13 }}>
-          相談する →
+        <a href="#entry" className="btn btn-primary join-header-cta" style={{ padding: '10px 18px', fontSize: 13 }}>
+          応募・相談 →
         </a>
       </div>
     </header>
@@ -254,7 +254,7 @@ export default function JoinPage() {
               WORK
             </div>
 
-            <div className="sec-label" style={{ marginBottom: 20 }}>
+            <div className="sec-label join-hero-label" style={{ marginBottom: 20 }}>
               <span className="dot" style={{ background: 'var(--pink)' }} />
               <span>CAREERS & PARTNERS · UNIQ TRASH INC.</span>
             </div>
@@ -278,11 +278,11 @@ export default function JoinPage() {
               className="join-hero-grid"
             >
               <p style={{ margin: 0, fontSize: 'clamp(15px,1.25vw,17px)', lineHeight: 1.85, fontWeight: 500 }}>
-                ユニークトラッシュは、業務用Webアプリ、HP制作、レガシーシステム移行を扱う会社です。
+                ユニークトラッシュは、業務用Webアプリ、Webサイト制作、既存システム刷新を扱う会社です。
                 現場の困りごとを仕様に変える<strong>SE系メンバー</strong>と、
-                必要としている会社へ商材を届ける<strong>代理店パートナー</strong>を募集しています。
+                企業の課題解決を一緒に提案する<strong>パートナー</strong>を募集しています。
               </p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <div className="join-hero-actions" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <a href="#careers" className="btn btn-primary">
                   採用を見る
                 </a>
@@ -301,9 +301,9 @@ export default function JoinPage() {
               }}
             >
               {[
-                ['SE / WEB APP', '業務のクセを、動く仕組みに変える。', 'var(--pink)', '#fff'],
-                ['AGENCY', '紹介・共同提案・販売代理、全部相談可。', 'var(--yellow)', 'var(--ink)'],
-                ['REMOTE FIRST', '全国から、オンライン中心で参加できます。', 'var(--mint)', 'var(--ink)'],
+                ['SE / WEB APP', '現場の課題を、使われる仕組みに変える。', 'var(--pink)', '#fff'],
+                ['PARTNER', '紹介・共同提案・販売代理で連携。', 'var(--yellow)', 'var(--ink)'],
+                ['REMOTE FIRST', '全国からオンライン中心で参画。', 'var(--mint)', 'var(--ink)'],
               ].map(([title, body, bg, ink], index) => (
                 <article
                   key={title}
@@ -339,11 +339,13 @@ export default function JoinPage() {
             <SectionHeading
               label="CAREERS · SE RECRUIT"
               dot="var(--blue)"
-              copy="募集要項だけでなく、どんな仕事を任せたいかが伝わるように、開発内容・技術・向いている人をまとめました。"
+              copy="業務を理解し、仕様に落とし、運用まで見届ける仕事です。正社員、業務委託、副業など、関わり方は個別に相談します。"
             >
               SE採用。
               <br />
-              現場を読む人へ。
+              現場を理解し、
+              <br />
+              仕組みに落とす人へ。
             </SectionHeading>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.05fr) minmax(280px, .95fr)', gap: 22 }} className="join-two-col">
@@ -394,11 +396,11 @@ export default function JoinPage() {
             <SectionHeading
               label="PARTNER PROGRAM · AGENCY"
               dot="var(--pink)"
-              copy="代理店募集ページで重視される、商材の売りやすさ・支援範囲・問い合わせまでの流れを1ページ内で分かるようにしました。"
+              copy="顧客接点を持つ企業・個人の方と、紹介・共同提案・販売代理などの形で連携します。"
             >
               代理店募集。
               <br />
-              売れる形まで一緒に。
+              提案から一緒に。
             </SectionHeading>
 
             <div style={{ display: 'grid', gap: 18, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', marginBottom: 24 }}>
@@ -432,7 +434,7 @@ export default function JoinPage() {
             <SectionHeading
               label="FLOW · HOW TO START"
               dot="var(--yellow)"
-              copy="採用もパートナーも、まずは30分ほど話して、お互いに合うかを確認する流れです。"
+              copy="最初の面談で、経験・顧客層・関わり方をすり合わせます。条件が合う場合は、小さな案件から始めます。"
             >
               はじめ方は、
               <br />
@@ -441,9 +443,9 @@ export default function JoinPage() {
 
             <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
               {[
-                ['01', '問い合わせ', '採用・代理店どちらかを明記してご連絡ください。'],
-                ['02', 'オンライン面談', '経験、得意領域、組み方、案件イメージをすり合わせます。'],
-                ['03', '小さく開始', '副業・紹介1件・共同提案など、始めやすい形から進めます。'],
+                ['01', '問い合わせ', 'フォームで「採用応募」または「代理店募集」を選択。現在の状況や希望を簡単に共有します。'],
+                ['02', 'オンライン面談', '経験、得意領域、希望する関わり方、案件イメージをすり合わせます。'],
+                ['03', '小さく開始', '副業、紹介1件、共同提案など、無理のない範囲から始めます。'],
               ].map(([n, title, body]) => (
                 <article key={n} className="nb-card reveal" style={{ background: '#fff', padding: 22 }}>
                   <div style={{ fontFamily: '"Archivo Black",sans-serif', fontSize: 34, color: 'var(--pink)' }}>{n}</div>
@@ -474,13 +476,13 @@ export default function JoinPage() {
                   <span>ENTRY / CONTACT</span>
                 </div>
                 <h2 style={{ margin: 0, fontSize: 'clamp(28px,4vw,48px)', lineHeight: 1.08, fontWeight: 900 }}>
-                  採用も代理店も、
+                  まずは話して、
                   <br />
-                  まずは相談から。
+                  合う形を決めます。
                 </h2>
                 <p style={{ margin: '16px 0 0', fontSize: 15, lineHeight: 1.8, color: '#333' }}>
-                  お問い合わせフォームの「ご相談内容」に、採用希望または代理店希望と書いてください。
-                  経歴書や提案資料がある場合は、その旨も添えてください。
+                  採用応募とパートナー相談は、お問い合わせフォームから受け付けています。
+                  経歴書、会社資料、提案したい案件がある場合は、本文に概要をご記入ください。
                 </p>
               </div>
               <a href="/#contact" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>

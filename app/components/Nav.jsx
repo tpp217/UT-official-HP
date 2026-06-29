@@ -108,7 +108,7 @@ export default function Nav() {
 
           <a
             href="#contact"
-            className="btn btn-primary"
+            className="btn btn-primary site-nav-cta"
             style={{ padding: '10px 18px', fontSize: 13 }}
           >
             お問い合わせ →
