@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ut-official-hp.vercel.app/</loc>
-    <lastmod>2026-05-01</lastmod>
+    <loc>https://uniq-trash.com/</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ut-official-hp.vercel.app/privacy</loc>
-    <lastmod>2026-05-01</lastmod>
+    <loc>https://uniq-trash.com/join</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://uniq-trash.com/privacy</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

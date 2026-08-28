@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://ut-official-hp.vercel.app'),
+  metadataBase: new URL('https://uniq-trash.com'),
   title: '株式会社ユニークトラッシュ | オリジナル業務用ウェブアプリ制作',
   description:
     '現場のクセをアプリに。オリジナルの業務用Webアプリ制作・HP制作、そしてレガシーシステムを現代に引っ越しさせる『システムリフォーム』。株式会社ユニークトラッシュ。',
