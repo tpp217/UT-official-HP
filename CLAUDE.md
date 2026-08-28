@@ -32,7 +32,8 @@ UT-official-HP/
 
 ## デプロイ
 
-- 本番: uniquetrash.inc 公開ドメイン（Vercel）
+- 本番: https://uniq-trash.com（Vercel）。`www.uniq-trash.com` と `*.vercel.app` は apex へ 308 リダイレクト（`next.config.mjs`）
+- 正規URLは `next.config.mjs` の `CANONICAL_ORIGIN` と `app/layout.jsx` の `metadataBase`、`public/robots.txt` / `public/sitemap.xml` で統一。ドメイン変更時は4箇所すべて更新する
 - main マージで Vercel 自動デプロイ
 
 Git / Vercel 運用はグローバル `~/.claude/CLAUDE.md` に準拠。

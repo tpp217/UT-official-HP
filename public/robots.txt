@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ut-official-hp.vercel.app/sitemap.xml
+Sitemap: https://uniq-trash.com/sitemap.xml
