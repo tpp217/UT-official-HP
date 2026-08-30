@@ -1,7 +1,10 @@
 import './globals.css';
 
+const SITE_URL = 'https://uniq-trash.com';
+const SITE_NAME = '株式会社ユニークトラッシュ';
+
 export const metadata = {
-  metadataBase: new URL('https://uniq-trash.com'),
+  metadataBase: new URL(SITE_URL),
   title: '株式会社ユニークトラッシュ | オリジナル業務用ウェブアプリ制作',
   description:
     '現場のクセをアプリに。オリジナルの業務用Webアプリ制作・HP制作、そしてレガシーシステムを現代に引っ越しさせる『システムリフォーム』。株式会社ユニークトラッシュ。',
@@ -41,6 +44,32 @@ export const viewport = {
   themeColor: '#f6f2e9',
 };
 
+// 検索結果の「サイト名」と組織情報を Google に明示する構造化データ。
+// これが無いとドメイン名（vercel.app / uniq-trash.com）から推測されてしまう
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
+      name: SITE_NAME,
+      alternateName: ['ユニークトラッシュ', 'Uniq Trash inc.'],
+      inLanguage: 'ja',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      url: `${SITE_URL}/`,
+      name: SITE_NAME,
+      alternateName: 'Uniq Trash inc.',
+      logo: `${SITE_URL}/apple-touch-icon.png`,
+      foundingDate: '2015-11-11',
+    },
+  ],
+};
+
 // GA4
 const GA_SNIPPET = `
 (function(){
@@ -69,6 +98,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
         <script dangerouslySetInnerHTML={{ __html: GA_SNIPPET }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
       </head>
       <body>{children}</body>
     </html>
